@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://karthikeya-portfolio.vercel.app/sitemap.xml
+Sitemap: https://karthikeya-s-portfolio.vercel.app/sitemap.xml

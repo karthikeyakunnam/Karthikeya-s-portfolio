@@ -4,7 +4,7 @@ import { structuredData } from "@/lib/seo";
 import PreloaderProvider from "@/app/providers/PreloaderProvider";
 import "./globals.css";
 
-const baseUrl = "https://karthikeya-portfolio.vercel.app";
+const baseUrl = "https://karthikeya-s-portfolio.vercel.app";
 const description =
   "GenAI Engineer specializing in Agentic AI Systems, LangGraph, RAG, and Multi-Agent Architectures";
 
