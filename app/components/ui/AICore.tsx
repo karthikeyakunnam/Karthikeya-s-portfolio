@@ -69,7 +69,11 @@ export default function AICore() {
       color: "#00E5FF",
       glowColor: "rgba(0, 229, 255, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#00E5FF] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#00E5FF] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
         </svg>
@@ -84,7 +88,11 @@ export default function AICore() {
       color: "#7C3AED",
       glowColor: "rgba(124, 58, 237, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#7C3AED] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#7C3AED] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <circle cx="11" cy="11" r="8" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -99,7 +107,11 @@ export default function AICore() {
       color: "#00FFC8",
       glowColor: "rgba(0, 255, 200, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#00FFC8] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#00FFC8] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <path d="M20 20a2 2 0 0 0 .5-3.5L13 10V3H9v7L2.5 16.5A2 2 0 0 0 3 20h17Z" />
         </svg>
       ),
@@ -113,7 +125,11 @@ export default function AICore() {
       color: "#7C3AED",
       glowColor: "rgba(124, 58, 237, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#7C3AED] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#7C3AED] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
           <path d="M12 6v6l4 2" />
         </svg>
@@ -128,7 +144,11 @@ export default function AICore() {
       color: "#00FFC8",
       glowColor: "rgba(0, 255, 200, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#00FFC8] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#00FFC8] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           <path d="m9 12 2 2 4-4" />
         </svg>
@@ -143,7 +163,11 @@ export default function AICore() {
       color: "#00E5FF",
       glowColor: "rgba(0, 229, 255, 0.4)",
       icon: (
-        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#00E5FF] fill-none stroke-current" strokeWidth="2">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-4 h-4 text-[#00E5FF] fill-none stroke-current"
+          strokeWidth="2"
+        >
           <polygon points="5 3 19 12 5 21 5 3" />
         </svg>
       ),
@@ -185,26 +209,55 @@ export default function AICore() {
               <stop offset="35%" stopColor="#7C3AED" stopOpacity="0.3" />
               <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
             </radialGradient>
-            
+
             {/* Drop Shadow and Neon Glow Filters */}
-            <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+            <filter
+              id="glowFilter"
+              x="-50%"
+              y="-50%"
+              width="200%"
+              height="200%"
+            >
               <feGaussianBlur stdDeviation="8" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <filter id="blurFilter" x="-40%" y="-40%" width="180%" height="180%">
+            <filter
+              id="blurFilter"
+              x="-40%"
+              y="-40%"
+              width="180%"
+              height="180%"
+            >
               <feGaussianBlur stdDeviation="4" />
             </filter>
           </defs>
 
           {/* BACKGROUND ENERGY FIELD (Isometric Grid lines) */}
-          <g opacity="0.08" stroke="#00E5FF" strokeWidth="0.5" className="animate-pulse">
-            <path d="M 250,50 L 450,250 L 250,450 L 50,250 Z" fill="none" strokeWidth="1" />
-            <path d="M 250,100 L 400,250 L 250,400 L 100,250 Z" fill="none" strokeWidth="0.75" />
-            <path d="M 250,150 L 350,250 L 250,350 L 150,250 Z" fill="none" strokeWidth="0.5" />
-            
+          <g
+            opacity="0.08"
+            stroke="#00E5FF"
+            strokeWidth="0.5"
+            className="animate-pulse"
+          >
+            <path
+              d="M 250,50 L 450,250 L 250,450 L 50,250 Z"
+              fill="none"
+              strokeWidth="1"
+            />
+            <path
+              d="M 250,100 L 400,250 L 250,400 L 100,250 Z"
+              fill="none"
+              strokeWidth="0.75"
+            />
+            <path
+              d="M 250,150 L 350,250 L 250,350 L 150,250 Z"
+              fill="none"
+              strokeWidth="0.5"
+            />
+
             {/* Axis grid wires */}
             <line x1="50" y1="250" x2="450" y2="250" />
             <line x1="250" y1="50" x2="250" y2="450" />
@@ -226,7 +279,7 @@ export default function AICore() {
                   opacity={isHovered ? "0.6" : "0.15"}
                   className="transition-all duration-300"
                 />
-                
+
                 {/* Traveling Packets outwards */}
                 <circle r="2.5" fill="#00FFC8" filter="url(#blurFilter)">
                   <animateMotion
@@ -260,7 +313,7 @@ export default function AICore() {
                   opacity={isActive ? "0.8" : "0.22"}
                   className="transition-all duration-300"
                 />
-                
+
                 {/* Moving active energy pulse */}
                 <path
                   d={`M ${fromNode.x},${fromNode.y} L ${toNode.x},${toNode.y}`}
@@ -272,7 +325,7 @@ export default function AICore() {
                   className="animate-scan-line"
                   style={{ animationDuration: "2.8s" }}
                 />
-                
+
                 {/* Workflow Data Packets */}
                 <circle r="3" fill="#00E5FF" filter="url(#blurFilter)">
                   <animateMotion
@@ -297,7 +350,7 @@ export default function AICore() {
               className="animate-pulse-glow"
               style={{ animationDuration: "4s" }}
             />
-            
+
             {/* Tech Constellation Rings */}
             <circle
               cx="250"
@@ -321,9 +374,12 @@ export default function AICore() {
               strokeDasharray="8 16"
               opacity="0.45"
               className="animate-spin"
-              style={{ animationDuration: "12s", animationDirection: "reverse" }}
+              style={{
+                animationDuration: "12s",
+                animationDirection: "reverse",
+              }}
             />
-            
+
             {/* Glowing Core Sphere */}
             <circle
               cx="250"
@@ -334,7 +390,7 @@ export default function AICore() {
               className="animate-pulse"
               style={{ animationDuration: "3.5s" }}
             />
-            
+
             {/* White core reflection highlight */}
             <circle
               cx="244"

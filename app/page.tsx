@@ -11,10 +11,9 @@ import Footer from "./components/Footer";
 import ScrollEngine from "./components/ScrollEngine";
 
 // Dynamic import for Three.js canvas (no SSR)
-const SceneCanvas = dynamic(
-  () => import("./components/three/SceneCanvas"),
-  { ssr: false }
-);
+const SceneCanvas = dynamic(() => import("./components/three/SceneCanvas"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (

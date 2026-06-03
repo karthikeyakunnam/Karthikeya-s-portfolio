@@ -9,7 +9,7 @@ interface PreloaderContextType {
 }
 
 const PreloaderContext = createContext<PreloaderContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const PreloaderProvider: React.FC<{

@@ -91,13 +91,7 @@ export const BikeSVG: React.FC<BikeSVGProps> = ({ x, size = 32 }) => {
       />
 
       {/* Pedal */}
-      <circle
-        cx="32"
-        cy="35"
-        r="2"
-        fill="#00E5FF"
-        opacity="0.8"
-      />
+      <circle cx="32" cy="35" r="2" fill="#00E5FF" opacity="0.8" />
 
       {/* Glow Effect */}
       <circle

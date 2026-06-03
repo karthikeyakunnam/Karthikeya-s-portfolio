@@ -9,7 +9,9 @@ import ProjectModal from "@/app/components/ui/ProjectModal";
 
 export default function ProjectsOverlay() {
   const setActiveProject = usePortfolioStore((s) => s.setActiveProject);
-  const [activeModalProject, setActiveModalProject] = useState<any | null>(null);
+  const [activeModalProject, setActiveModalProject] = useState<any | null>(
+    null,
+  );
 
   return (
     <>
@@ -69,7 +71,9 @@ export default function ProjectsOverlay() {
                     >
                       {project.title}
                     </h3>
-                    <p className="text-white/40 text-sm mt-1">{project.subtitle}</p>
+                    <p className="text-white/40 text-sm mt-1">
+                      {project.subtitle}
+                    </p>
                   </div>
 
                   {/* Description */}
@@ -79,22 +83,24 @@ export default function ProjectsOverlay() {
 
                   {/* Metrics */}
                   <div className="grid grid-cols-2 gap-2">
-                    {Object.entries(project.metrics).slice(0, 4).map(([key, value]) => (
-                      <div
-                        key={key}
-                        className="px-2.5 py-2 rounded-lg bg-white/[0.02] border border-white/5"
-                      >
-                        <p
-                          className="text-sm font-bold font-mono"
-                          style={{ color: project.color }}
+                    {Object.entries(project.metrics)
+                      .slice(0, 4)
+                      .map(([key, value]) => (
+                        <div
+                          key={key}
+                          className="px-2.5 py-2 rounded-lg bg-white/[0.02] border border-white/5"
                         >
-                          {String(value)}
-                        </p>
-                        <p className="text-[9px] text-white/30 uppercase tracking-wider font-mono">
-                          {key}
-                        </p>
-                      </div>
-                    ))}
+                          <p
+                            className="text-sm font-bold font-mono"
+                            style={{ color: project.color }}
+                          >
+                            {String(value)}
+                          </p>
+                          <p className="text-[9px] text-white/30 uppercase tracking-wider font-mono">
+                            {key}
+                          </p>
+                        </div>
+                      ))}
                   </div>
 
                   {/* Technologies */}
@@ -116,7 +122,10 @@ export default function ProjectsOverlay() {
 
                   {/* Impact */}
                   <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-                    <p className="text-xs font-medium" style={{ color: `${project.color}BB` }}>
+                    <p
+                      className="text-xs font-medium"
+                      style={{ color: `${project.color}BB` }}
+                    >
                       ↗ {project.impact}
                     </p>
                     <span className="text-[9px] font-mono text-white/30 tracking-wider">

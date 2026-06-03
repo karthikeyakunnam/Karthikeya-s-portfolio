@@ -23,7 +23,7 @@ function generateNetworkNodes(count: number, radius: number): Float32Array {
 function generateConnections(
   positions: Float32Array,
   count: number,
-  maxDist: number
+  maxDist: number,
 ): Float32Array {
   const lines: number[] = [];
   for (let i = 0; i < count && lines.length < 600; i++) {
@@ -34,8 +34,12 @@ function generateConnections(
       const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
       if (dist < maxDist) {
         lines.push(
-          positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
-          positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+          positions[i * 3],
+          positions[i * 3 + 1],
+          positions[i * 3 + 2],
+          positions[j * 3],
+          positions[j * 3 + 1],
+          positions[j * 3 + 2],
         );
       }
     }
@@ -60,11 +64,12 @@ export default function HeroUniverse() {
   const nodePositions = useMemo(() => generateNetworkNodes(nodeCount, 2.5), []);
   const connectionPositions = useMemo(
     () => generateConnections(nodePositions, nodeCount, 1.2),
-    [nodePositions]
+    [nodePositions],
   );
 
   useFrame((state) => {
-    const { scrollProgress, mouse, prefersReducedMotion } = usePortfolioStore.getState();
+    const { scrollProgress, mouse, prefersReducedMotion } =
+      usePortfolioStore.getState();
     const time = state.clock.elapsedTime;
 
     // Hero visible from 0 to ~0.2
@@ -73,7 +78,8 @@ export default function HeroUniverse() {
     // Background decoration visibility: fades in as we scroll to the Agents Architecture section (active at scrollProgress ~0.16)
     // and fades out as we scroll to Projects (above 0.25)
     const bgFadeIn = THREE.MathUtils.smoothstep(scrollProgress, 0.0, 0.12);
-    const bgFadeOut = 1 - THREE.MathUtils.smoothstep(scrollProgress, 0.25, 0.38);
+    const bgFadeOut =
+      1 - THREE.MathUtils.smoothstep(scrollProgress, 0.25, 0.38);
     const bgVisibility = bgFadeIn * bgFadeOut;
 
     // Show group if either core hero objects or scrolling background meshes are active
@@ -163,12 +169,12 @@ export default function HeroUniverse() {
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
         mouse.x * 0.05,
-        0.02
+        0.02,
       );
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
         mouse.y * 0.03,
-        0.02
+        0.02,
       );
     }
   });
@@ -258,15 +264,30 @@ export default function HeroUniverse() {
       {/* Agent Connection Rings */}
       <mesh ref={ring1Ref} rotation={[0.3, 0, 0]}>
         <torusGeometry args={[3.5, 0.008, 8, 128]} />
-        <meshBasicMaterial color="#00E5FF" transparent opacity={0.06} toneMapped={false} />
+        <meshBasicMaterial
+          color="#00E5FF"
+          transparent
+          opacity={0.06}
+          toneMapped={false}
+        />
       </mesh>
       <mesh ref={ring2Ref} rotation={[1.2, 0.5, 0]}>
         <torusGeometry args={[3.8, 0.006, 8, 128]} />
-        <meshBasicMaterial color="#7C3AED" transparent opacity={0.06} toneMapped={false} />
+        <meshBasicMaterial
+          color="#7C3AED"
+          transparent
+          opacity={0.06}
+          toneMapped={false}
+        />
       </mesh>
       <mesh ref={ring3Ref} rotation={[0.8, 1.3, 0.4]}>
         <torusGeometry args={[4.1, 0.005, 8, 128]} />
-        <meshBasicMaterial color="#00FFC8" transparent opacity={0.06} toneMapped={false} />
+        <meshBasicMaterial
+          color="#00FFC8"
+          transparent
+          opacity={0.06}
+          toneMapped={false}
+        />
       </mesh>
     </group>
   );

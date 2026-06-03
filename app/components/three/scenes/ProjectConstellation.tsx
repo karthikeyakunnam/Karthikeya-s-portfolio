@@ -16,7 +16,7 @@ const CLUSTER_CENTERS: [number, number, number][] = [
 function generateCluster(
   center: [number, number, number],
   nodeCount: number,
-  spread: number
+  spread: number,
 ): Float32Array {
   const positions = new Float32Array(nodeCount * 3);
   for (let i = 0; i < nodeCount; i++) {
@@ -43,7 +43,10 @@ function ClusterNetwork({
   const coreRef = useRef<THREE.Mesh>(null);
 
   const nodeCount = 7;
-  const positions = useMemo(() => generateCluster(center, nodeCount, 1.5), [center]);
+  const positions = useMemo(
+    () => generateCluster(center, nodeCount, 1.5),
+    [center],
+  );
 
   // Generate connection lines within the cluster
   const connectionPositions = useMemo(() => {
@@ -56,8 +59,12 @@ function ClusterNetwork({
         const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
         if (dist < 2.0) {
           lines.push(
-            positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
-            positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+            positions[i * 3],
+            positions[i * 3 + 1],
+            positions[i * 3 + 2],
+            positions[j * 3],
+            positions[j * 3 + 1],
+            positions[j * 3 + 2],
           );
         }
       }
@@ -66,7 +73,8 @@ function ClusterNetwork({
   }, [positions]);
 
   useFrame((state) => {
-    const { activeProject, prefersReducedMotion } = usePortfolioStore.getState();
+    const { activeProject, prefersReducedMotion } =
+      usePortfolioStore.getState();
     const time = state.clock.elapsedTime;
 
     if (prefersReducedMotion) return;
@@ -93,13 +101,23 @@ function ClusterNetwork({
       {/* Central core node */}
       <mesh ref={coreRef} position={center}>
         <sphereGeometry args={[0.2, 16, 16]} />
-        <meshBasicMaterial color={color} transparent opacity={0.7} toneMapped={false} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.7}
+          toneMapped={false}
+        />
       </mesh>
 
       {/* Core glow */}
       <mesh position={center}>
         <sphereGeometry args={[0.5, 8, 8]} />
-        <meshBasicMaterial color={color} transparent opacity={0.04} toneMapped={false} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.04}
+          toneMapped={false}
+        />
       </mesh>
 
       {/* Cluster nodes */}
@@ -121,9 +139,17 @@ function ClusterNetwork({
       {connectionPositions.length > 0 && (
         <lineSegments>
           <bufferGeometry>
-            <bufferAttribute attach="attributes-position" args={[connectionPositions, 3]} />
+            <bufferAttribute
+              attach="attributes-position"
+              args={[connectionPositions, 3]}
+            />
           </bufferGeometry>
-          <lineBasicMaterial color={color} transparent opacity={0.1} toneMapped={false} />
+          <lineBasicMaterial
+            color={color}
+            transparent
+            opacity={0.1}
+            toneMapped={false}
+          />
         </lineSegments>
       )}
     </group>
@@ -149,7 +175,12 @@ function InterClusterBeam({
 
   return (
     <lineSegments geometry={geometry}>
-      <lineBasicMaterial color={color} transparent opacity={0.06} toneMapped={false} />
+      <lineBasicMaterial
+        color={color}
+        transparent
+        opacity={0.06}
+        toneMapped={false}
+      />
     </lineSegments>
   );
 }
@@ -183,9 +214,21 @@ export default function ProjectConstellation() {
       ))}
 
       {/* Inter-cluster beams */}
-      <InterClusterBeam from={CLUSTER_CENTERS[0]} to={CLUSTER_CENTERS[1]} color="#00E5FF" />
-      <InterClusterBeam from={CLUSTER_CENTERS[1]} to={CLUSTER_CENTERS[2]} color="#7C3AED" />
-      <InterClusterBeam from={CLUSTER_CENTERS[2]} to={CLUSTER_CENTERS[0]} color="#00FFC8" />
+      <InterClusterBeam
+        from={CLUSTER_CENTERS[0]}
+        to={CLUSTER_CENTERS[1]}
+        color="#00E5FF"
+      />
+      <InterClusterBeam
+        from={CLUSTER_CENTERS[1]}
+        to={CLUSTER_CENTERS[2]}
+        color="#7C3AED"
+      />
+      <InterClusterBeam
+        from={CLUSTER_CENTERS[2]}
+        to={CLUSTER_CENTERS[0]}
+        color="#00FFC8"
+      />
     </group>
   );
 }

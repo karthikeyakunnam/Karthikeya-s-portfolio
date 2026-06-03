@@ -21,7 +21,9 @@ function SceneContent() {
 
 export default function SceneCanvas() {
   const setViewport = usePortfolioStore((s) => s.setViewport);
-  const setPrefersReducedMotion = usePortfolioStore((s) => s.setPrefersReducedMotion);
+  const setPrefersReducedMotion = usePortfolioStore(
+    (s) => s.setPrefersReducedMotion,
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,7 +35,8 @@ export default function SceneCanvas() {
     // Check reduced motion preference
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
     mq.addEventListener("change", handler);
 
     return () => {

@@ -17,8 +17,8 @@ function fibonacciSphere(count: number, radius: number): THREE.Vector3[] {
       new THREE.Vector3(
         Math.sin(phi) * Math.cos(theta) * radius,
         Math.sin(phi) * Math.sin(theta) * radius,
-        Math.cos(phi) * radius
-      )
+        Math.cos(phi) * radius,
+      ),
     );
   }
   return points;
@@ -30,7 +30,10 @@ export default function SkillsNeuralNetwork() {
   const connectionsRef = useRef<THREE.Group>(null);
   const packetsRef = useRef<THREE.InstancedMesh>(null);
 
-  const nodePositions = useMemo(() => fibonacciSphere(KNOWLEDGE_NODES.length, 4), []);
+  const nodePositions = useMemo(
+    () => fibonacciSphere(KNOWLEDGE_NODES.length, 4),
+    [],
+  );
 
   // k-nearest connections (k=3)
   const connections = useMemo(() => {
@@ -44,7 +47,11 @@ export default function SkillsNeuralNetwork() {
 
       distances.forEach(({ j }) => {
         const key = Math.min(i, j) * 1000 + Math.max(i, j);
-        if (!conns.find((c) => Math.min(c[0], c[1]) * 1000 + Math.max(c[0], c[1]) === key)) {
+        if (
+          !conns.find(
+            (c) => Math.min(c[0], c[1]) * 1000 + Math.max(c[0], c[1]) === key,
+          )
+        ) {
           conns.push([i, j]);
         }
       });
@@ -54,14 +61,18 @@ export default function SkillsNeuralNetwork() {
 
   const connectionGeometries = useMemo(() => {
     return connections.map(([from, to]) => {
-      return new THREE.BufferGeometry().setFromPoints([nodePositions[from], nodePositions[to]]);
+      return new THREE.BufferGeometry().setFromPoints([
+        nodePositions[from],
+        nodePositions[to],
+      ]);
     });
   }, [connections, nodePositions]);
 
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   useFrame((state) => {
-    const { scrollProgress, hoveredSkill, prefersReducedMotion } = usePortfolioStore.getState();
+    const { scrollProgress, hoveredSkill, prefersReducedMotion } =
+      usePortfolioStore.getState();
     const time = state.clock.elapsedTime;
 
     // Visible during scene 3 (0.65 - 0.85)
@@ -84,7 +95,9 @@ export default function SkillsNeuralNetwork() {
       for (let i = 0; i < KNOWLEDGE_NODES.length; i++) {
         const pos = nodePositions[i];
         const isHovered = hoveredSkill === i;
-        const pulse = prefersReducedMotion ? 1 : 1 + Math.sin(time * 2 + i * 0.5) * 0.1;
+        const pulse = prefersReducedMotion
+          ? 1
+          : 1 + Math.sin(time * 2 + i * 0.5) * 0.1;
         const scale = isHovered ? 0.18 * pulse : 0.12 * pulse;
 
         dummy.position.copy(pos);
@@ -119,7 +132,10 @@ export default function SkillsNeuralNetwork() {
   return (
     <group ref={groupRef} position={[0, 4, -3]}>
       {/* Skill nodes (instanced) */}
-      <instancedMesh ref={nodesRef} args={[undefined, undefined, KNOWLEDGE_NODES.length]}>
+      <instancedMesh
+        ref={nodesRef}
+        args={[undefined, undefined, KNOWLEDGE_NODES.length]}
+      >
         <sphereGeometry args={[1, 16, 16]} />
         <meshBasicMaterial toneMapped={false} transparent opacity={0.9} />
       </instancedMesh>
@@ -139,9 +155,17 @@ export default function SkillsNeuralNetwork() {
       </group>
 
       {/* Data packets (instanced) */}
-      <instancedMesh ref={packetsRef} args={[undefined, undefined, connections.length]}>
+      <instancedMesh
+        ref={packetsRef}
+        args={[undefined, undefined, connections.length]}
+      >
         <sphereGeometry args={[1, 8, 8]} />
-        <meshBasicMaterial color="#FFFFFF" toneMapped={false} transparent opacity={0.8} />
+        <meshBasicMaterial
+          color="#FFFFFF"
+          toneMapped={false}
+          transparent
+          opacity={0.8}
+        />
       </instancedMesh>
     </group>
   );

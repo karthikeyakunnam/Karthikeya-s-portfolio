@@ -41,7 +41,7 @@ export default function HudButton({
         variant === "ghost",
       "opacity-50 cursor-not-allowed": disabled,
     },
-    className
+    className,
   );
 
   if (href) {

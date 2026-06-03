@@ -58,8 +58,19 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       <div className="absolute inset-0 overflow-hidden">
         <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00E5FF" strokeWidth="0.5" opacity="0.1" />
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="#00E5FF"
+                strokeWidth="0.5"
+                opacity="0.1"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
@@ -101,7 +112,9 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             {/* Progress */}
             <div className="space-y-3">
               <div className="flex items-baseline justify-between">
-                <span className="font-mono text-xs text-white/30">PROGRESS:</span>
+                <span className="font-mono text-xs text-white/30">
+                  PROGRESS:
+                </span>
                 <span className="font-mono text-lg font-bold text-primary">
                   {percentage}%
                 </span>
@@ -113,7 +126,8 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                   className="h-full bg-gradient-to-r from-primary to-primary rounded-full transition-all duration-100"
                   style={{
                     width: `${percentage}%`,
-                    boxShadow: "0 0 20px rgba(0, 229, 255, 0.8), inset 0 0 10px rgba(0, 229, 255, 0.6)",
+                    boxShadow:
+                      "0 0 20px rgba(0, 229, 255, 0.8), inset 0 0 10px rgba(0, 229, 255, 0.6)",
                   }}
                 />
                 <div
@@ -131,7 +145,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
             </div>
 
             {/* Loading Dots */}
-            <div className="mt-6 flex justify-center gap-1.5" aria-hidden="true">
+            <div
+              className="mt-6 flex justify-center gap-1.5"
+              aria-hidden="true"
+            >
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
@@ -146,8 +163,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         {/* Status Text */}
         <div className="text-center text-xs font-mono text-white/30 animate-pulse">
           <p>
-            Initializing GenAI Engine{" "}
-            <span className="text-primary">»</span>
+            Initializing GenAI Engine <span className="text-primary">»</span>
           </p>
         </div>
       </div>

@@ -112,7 +112,8 @@ export function PerformanceMetricsPreloaderExample() {
       if (window.performance) {
         const perfData = window.performance.timing;
         metrics.serverTiming = perfData.responseEnd - perfData.navigationStart;
-        metrics.domReady = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+        metrics.domReady =
+          perfData.domContentLoadedEventEnd - perfData.navigationStart;
         metrics.pageLoad = perfData.loadEventEnd - perfData.navigationStart;
       }
 

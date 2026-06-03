@@ -3,7 +3,7 @@
 export const generateMetadata = (
   title: string,
   description: string,
-  image?: string
+  image?: string,
 ) => {
   const baseUrl = "https://karthikeya-portfolio.vercel.app";
   const defaultImage = `${baseUrl}/og-image.jpg`;

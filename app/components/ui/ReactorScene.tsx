@@ -16,49 +16,62 @@ export const AGENT_NODES: AgentNode[] = [
   {
     id: 0,
     name: "Planner",
-    purpose: "Decomposes complex user requests into sequential execution plans.",
+    purpose:
+      "Decomposes complex user requests into sequential execution plans.",
     capability: "Task decomposition, dynamic DAG routing, and error recovery.",
     color: "#00E5FF", // Cyan
   },
   {
     id: 1,
     name: "Research",
-    purpose: "Gathers external web information and synthesizes high-quality findings.",
-    capability: "Deep web queries, multi-source compilation, and citation tracking.",
+    purpose:
+      "Gathers external web information and synthesizes high-quality findings.",
+    capability:
+      "Deep web queries, multi-source compilation, and citation tracking.",
     color: "#7C3AED", // Purple
   },
   {
     id: 2,
     name: "Retriever",
-    purpose: "Queries vector stores and databases for semantic context retrieval.",
-    capability: "Vector embeddings matching, hybrid dense/sparse search, and RAG.",
+    purpose:
+      "Queries vector stores and databases for semantic context retrieval.",
+    capability:
+      "Vector embeddings matching, hybrid dense/sparse search, and RAG.",
     color: "#00FFC8", // Green
   },
   {
     id: 3,
     name: "Memory",
     purpose: "Maintains session chat logs and short-term state persistence.",
-    capability: "Context summarization, state caching, and SQLite system logging.",
+    capability:
+      "Context summarization, state caching, and SQLite system logging.",
     color: "#7C3AED", // Purple
   },
   {
     id: 4,
     name: "Critic",
-    purpose: "Validates output quality, security, and checks for model hallucinations.",
-    capability: "LlamaGuard safety filtering, facts verification, and self-correction loops.",
+    purpose:
+      "Validates output quality, security, and checks for model hallucinations.",
+    capability:
+      "LlamaGuard safety filtering, facts verification, and self-correction loops.",
     color: "#00FFC8", // Green
   },
   {
     id: 5,
     name: "Executor",
     purpose: "Executes deterministic code, actions, and API integrations.",
-    capability: "Python sandboxed runtimes, Git integrations, and filesystem edits.",
+    capability:
+      "Python sandboxed runtimes, Git integrations, and filesystem edits.",
     color: "#00E5FF", // Cyan
   },
 ];
 
 // Inner 3D scene logic inside Canvas context
-function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null) => void }) {
+function ReactorCore({
+  onHoverAgent,
+}: {
+  onHoverAgent: (agent: AgentNode | null) => void;
+}) {
   const groupRef = useRef<THREE.Group>(null);
   const coreRef = useRef<THREE.Mesh>(null);
   const cageRef = useRef<THREE.Mesh>(null);
@@ -76,7 +89,7 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
         basePos: new THREE.Vector3(
           Math.cos(angle) * nodeRadius,
           0,
-          Math.sin(angle) * nodeRadius
+          Math.sin(angle) * nodeRadius,
         ),
       };
     });
@@ -117,10 +130,18 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
     if (groupRef.current) {
       const targetRotX = -pointerY * 0.2;
       const targetRotY = pointerX * 0.25;
-      
-      groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotX, 0.05);
+
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(
+        groupRef.current.rotation.x,
+        targetRotX,
+        0.05,
+      );
       // Continuous slow background rotation combined with mouse tilt
-      groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetRotY + time * 0.08, 0.05);
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(
+        groupRef.current.rotation.y,
+        targetRotY + time * 0.08,
+        0.05,
+      );
     }
 
     // 4. Animate Data Packets traveling outwards from Core (0,0,0) to Nodes
@@ -131,16 +152,25 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
         if (mesh) {
           // Flow speed cycle (0 to 1 progress)
           const speed = 0.8;
-          const progress = ((time * speed) + (i * 0.15)) % 1.0;
-          
+          const progress = (time * speed + i * 0.15) % 1.0;
+
           // Hover state: node floats dynamically
-          const hoverOffset = hoveredNode === node.id ? Math.sin(time * 4) * 0.1 : 0;
+          const hoverOffset =
+            hoveredNode === node.id ? Math.sin(time * 4) * 0.1 : 0;
           const nodeY = Math.sin(time * 1.5 + i) * 0.15 + hoverOffset;
-          const targetPos = new THREE.Vector3(node.basePos.x, nodeY, node.basePos.z);
-          
+          const targetPos = new THREE.Vector3(
+            node.basePos.x,
+            nodeY,
+            node.basePos.z,
+          );
+
           // Lerp packet from center to node position
-          mesh.position.lerpVectors(new THREE.Vector3(0, 0, 0), targetPos, progress);
-          
+          mesh.position.lerpVectors(
+            new THREE.Vector3(0, 0, 0),
+            targetPos,
+            progress,
+          );
+
           // Pulse packet scale
           mesh.scale.setScalar(0.7 + Math.sin(time * 5 + i) * 0.3);
         }
@@ -159,7 +189,12 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
       {/* Core Radial Glow */}
       <mesh>
         <sphereGeometry args={[0.9, 16, 16]} />
-        <meshBasicMaterial color="#00E5FF" transparent opacity={0.06} toneMapped={false} />
+        <meshBasicMaterial
+          color="#00E5FF"
+          transparent
+          opacity={0.06}
+          toneMapped={false}
+        />
       </mesh>
 
       {/* 2. Outer Rotating Wireframe Cage */}
@@ -205,10 +240,14 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
                     attach="attributes-position"
                     args={[
                       new Float32Array([
-                        0, 0, 0,
-                        node.basePos.x, 0, node.basePos.z
+                        0,
+                        0,
+                        0,
+                        node.basePos.x,
+                        0,
+                        node.basePos.z,
                       ]),
-                      3
+                      3,
                     ]}
                   />
                 </bufferGeometry>
@@ -238,7 +277,7 @@ function ReactorCore({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null)
       {/* 6. Orbiting Interactive Agent Nodes */}
       {nodes.map((node, i) => {
         const isHovered = hoveredNode === node.id;
-        
+
         // Compute dynamic float position
         return (
           <group key={node.id}>
@@ -285,14 +324,12 @@ function NodeMesh({
       meshRef.current.position.set(
         node.basePos.x,
         Math.sin(time * 1.5 + index) * 0.15 + hoverOffset,
-        node.basePos.z
+        node.basePos.z,
       );
 
       // Node pulse size
       const pulse = 1.0 + Math.sin(time * 2.5 + index) * 0.08;
-      meshRef.current.scale.setScalar(
-        (isHovered ? 1.4 : 1.0) * pulse
-      );
+      meshRef.current.scale.setScalar((isHovered ? 1.4 : 1.0) * pulse);
     }
   });
 
@@ -319,7 +356,11 @@ function NodeMesh({
   );
 }
 
-export default function ReactorScene({ onHoverAgent }: { onHoverAgent: (agent: AgentNode | null) => void }) {
+export default function ReactorScene({
+  onHoverAgent,
+}: {
+  onHoverAgent: (agent: AgentNode | null) => void;
+}) {
   return (
     <div className="w-full h-full min-h-[420px] md:min-h-[500px] relative select-none">
       <Canvas

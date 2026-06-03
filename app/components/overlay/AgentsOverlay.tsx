@@ -87,8 +87,16 @@ export default function AgentsOverlay() {
                       Capabilities
                     </p>
                     {agent.capabilities.map((cap) => (
-                      <div key={cap} className="flex items-start gap-1.5 text-xs">
-                        <span style={{ color: agent.color }} className="text-[8px] mt-0.5">●</span>
+                      <div
+                        key={cap}
+                        className="flex items-start gap-1.5 text-xs"
+                      >
+                        <span
+                          style={{ color: agent.color }}
+                          className="text-[8px] mt-0.5"
+                        >
+                          ●
+                        </span>
                         <span className="text-white/50">{cap}</span>
                       </div>
                     ))}

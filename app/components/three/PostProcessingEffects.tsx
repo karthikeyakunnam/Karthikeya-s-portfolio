@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { EffectComposer, Bloom, Noise, Vignette } from "@react-three/postprocessing";
+import {
+  EffectComposer,
+  Bloom,
+  Noise,
+  Vignette,
+} from "@react-three/postprocessing";
 import { usePortfolioStore } from "@/app/store/usePortfolioStore";
 
 export default function PostProcessingEffects() {
@@ -20,11 +25,7 @@ export default function PostProcessingEffects() {
         mipmapBlur
       />
       <Noise opacity={0.015} />
-      <Vignette
-        offset={0.3}
-        darkness={0.5}
-        eskil={false}
-      />
+      <Vignette offset={0.3} darkness={0.5} eskil={false} />
     </EffectComposer>
   );
 }

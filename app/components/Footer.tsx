@@ -12,7 +12,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-2 font-display">K.</h3>
+            <h3 className="text-2xl font-bold text-primary mb-2 font-display">
+              K.
+            </h3>
             <p className="text-white/30 text-sm">
               GenAI Engineer | Agentic AI Systems Builder
             </p>
@@ -20,7 +22,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-white/60 mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
+            <h4 className="font-semibold text-white/60 mb-4 text-sm uppercase tracking-wider">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
               {[
                 { label: "Projects", href: "#projects" },
@@ -50,7 +54,9 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="font-semibold text-white/60 mb-4 text-sm uppercase tracking-wider">Connect</h4>
+            <h4 className="font-semibold text-white/60 mb-4 text-sm uppercase tracking-wider">
+              Connect
+            </h4>
             <div className="flex gap-3">
               {SOCIAL_LINKS.map((link) => (
                 <a
@@ -70,7 +76,9 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-white/20 text-xs font-mono">
-          <p>&copy; {currentYear} {PORTFOLIO_DATA.name}. All rights reserved.</p>
+          <p>
+            &copy; {currentYear} {PORTFOLIO_DATA.name}. All rights reserved.
+          </p>
           <p>Built with Next.js, Three.js, GSAP | Deployed on Vercel</p>
         </div>
       </div>

@@ -38,7 +38,7 @@ export const skipLinkStyles = {
 // Focus management helper
 export const manageFocus = (
   element: HTMLElement | null,
-  shouldFocus: boolean = true
+  shouldFocus: boolean = true,
 ) => {
   if (shouldFocus && element) {
     element.focus();

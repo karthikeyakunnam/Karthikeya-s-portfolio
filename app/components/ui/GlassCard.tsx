@@ -29,9 +29,10 @@ export default function GlassCard({
           "glass-card": variant === "default",
           "glass-strong": variant === "strong",
           glass: variant === "subtle",
-          "hover:border-primary/20 hover:shadow-[0_0_30px_rgba(0,229,255,0.08)]": hover,
+          "hover:border-primary/20 hover:shadow-[0_0_30px_rgba(0,229,255,0.08)]":
+            hover,
         },
-        className
+        className,
       )}
       style={style}
     >

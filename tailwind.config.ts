@@ -1,27 +1,25 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        "background": "#0B0F19",
-        "primary": "#00E5FF",
-        "secondary": "#7C3AED",
-        "accent": "#00FFC8",
-        "danger": "#FF4444",
-        "warning": "#FFD93D",
-        "success": "#6BCB77",
-        "text": {
+        background: "#0B0F19",
+        primary: "#00E5FF",
+        secondary: "#7C3AED",
+        accent: "#00FFC8",
+        danger: "#FF4444",
+        warning: "#FFD93D",
+        success: "#6BCB77",
+        text: {
           DEFAULT: "#FFFFFF",
-          "primary": "#FFFFFF",
-          "muted": "#8B8B8B",
+          primary: "#FFFFFF",
+          muted: "#8B8B8B",
         },
-        "muted": "#8B8B8B",
-        "surface": "#0A0F1A",
-        "border": "#1A1F2E",
+        muted: "#8B8B8B",
+        surface: "#0A0F1A",
+        border: "#1A1F2E",
       },
       fontFamily: {
         sans: ["'Space Grotesk'", "'Inter'", "system-ui", "sans-serif"],
@@ -30,15 +28,17 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "glass": "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        glass:
+          "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
       },
       keyframes: {
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
         },
-        "glow": {
+        glow: {
           "0%, 100%": { textShadow: "0 0 20px rgba(0, 229, 255, 0.5)" },
           "50%": { textShadow: "0 0 40px rgba(0, 229, 255, 1)" },
         },
@@ -81,8 +81,8 @@ const config: Config = {
         },
       },
       animation: {
-        "float": "float 3s ease-in-out infinite",
-        "glow": "glow 3s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
+        glow: "glow 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "hud-scan": "hud-scan 3s linear infinite",
         "border-glow": "border-glow 2s ease-in-out infinite",
@@ -98,11 +98,11 @@ const config: Config = {
         "144": "36rem",
       },
       fontSize: {
-        "xs": ["0.75rem", { lineHeight: "1rem" }],
-        "sm": ["0.875rem", { lineHeight: "1.25rem" }],
-        "base": ["1rem", { lineHeight: "1.5rem" }],
-        "lg": ["1.125rem", { lineHeight: "1.75rem" }],
-        "xl": ["1.25rem", { lineHeight: "1.75rem" }],
+        xs: ["0.75rem", { lineHeight: "1rem" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem" }],
+        base: ["1rem", { lineHeight: "1.5rem" }],
+        lg: ["1.125rem", { lineHeight: "1.75rem" }],
+        xl: ["1.25rem", { lineHeight: "1.75rem" }],
         "2xl": ["1.5rem", { lineHeight: "2rem" }],
         "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
         "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
@@ -112,7 +112,7 @@ const config: Config = {
         "8xl": ["6rem", { lineHeight: "1" }],
       },
       backdropBlur: {
-        "xs": "2px",
+        xs: "2px",
       },
     },
   },

@@ -37,7 +37,8 @@ export default function ParticleField() {
 
     if (!pointsRef.current || prefersReducedMotion) return;
 
-    const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
+    const positions = pointsRef.current.geometry.attributes.position
+      .array as Float32Array;
     const time = state.clock.elapsedTime;
 
     for (let i = 0; i < particleCount; i++) {
@@ -58,12 +59,12 @@ export default function ParticleField() {
     pointsRef.current.rotation.y = THREE.MathUtils.lerp(
       pointsRef.current.rotation.y,
       mouse.x * 0.02,
-      0.01
+      0.01,
     );
     pointsRef.current.rotation.x = THREE.MathUtils.lerp(
       pointsRef.current.rotation.x,
       mouse.y * 0.01,
-      0.01
+      0.01,
     );
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;

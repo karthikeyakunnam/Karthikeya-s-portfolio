@@ -23,13 +23,13 @@ export default function EducationOverlay() {
             Capability <GradientText>Matrix</GradientText>
           </h2>
           <p className="text-white/40 text-sm max-w-xl mx-auto font-mono">
-            Bridging foundational engineering theory with state-of-the-art agent architecture.
+            Bridging foundational engineering theory with state-of-the-art agent
+            architecture.
           </p>
         </div>
 
         {/* Split Screen Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
           {/* LEFT COLUMN: Education Cards (30% visual weight) */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <div className="mb-2">
@@ -49,22 +49,38 @@ export default function EducationOverlay() {
                 className="p-5 border border-white/5 bg-[#0e1322]/50 hover:bg-[#12192c]/60 transition-all duration-300 relative group overflow-hidden"
               >
                 {/* Decorative neon edge glow matching index */}
-                <div 
+                <div
                   className="absolute left-0 top-0 bottom-0 w-[3px]"
                   style={{
-                    backgroundColor: idx === 0 ? "#00E5FF" : idx === 1 ? "#7C3AED" : "#00FFC8",
-                    boxShadow: `0 0 10px ${idx === 0 ? "#00E5FF" : idx === 1 ? "#7C3AED" : "#00FFC8"}`
+                    backgroundColor:
+                      idx === 0 ? "#00E5FF" : idx === 1 ? "#7C3AED" : "#00FFC8",
+                    boxShadow: `0 0 10px ${idx === 0 ? "#00E5FF" : idx === 1 ? "#7C3AED" : "#00FFC8"}`,
                   }}
                 />
 
                 <div className="relative z-10">
                   <div className="flex justify-between items-start gap-3 mb-2.5">
-                    <span 
+                    <span
                       className="font-mono text-[9px] font-bold px-2 py-0.5 rounded border"
                       style={{
-                        color: idx === 0 ? "#00E5FF" : idx === 1 ? "#7C3AED" : "#00FFC8",
-                        borderColor: idx === 0 ? "#00E5FF33" : idx === 1 ? "#7C3AED33" : "#00FFC833",
-                        backgroundColor: idx === 0 ? "#00E5FF08" : idx === 1 ? "#7C3AED08" : "#00FFC808"
+                        color:
+                          idx === 0
+                            ? "#00E5FF"
+                            : idx === 1
+                              ? "#7C3AED"
+                              : "#00FFC8",
+                        borderColor:
+                          idx === 0
+                            ? "#00E5FF33"
+                            : idx === 1
+                              ? "#7C3AED33"
+                              : "#00FFC833",
+                        backgroundColor:
+                          idx === 0
+                            ? "#00E5FF08"
+                            : idx === 1
+                              ? "#7C3AED08"
+                              : "#00FFC808",
                       }}
                     >
                       {edu.period}
@@ -96,10 +112,9 @@ export default function EducationOverlay() {
                 Mechanical Interface
               </h3>
             </div>
-            
+
             <SkillsMacroPad />
           </div>
-          
         </div>
       </div>
     </section>

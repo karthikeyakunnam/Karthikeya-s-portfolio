@@ -8,13 +8,13 @@ import { AGENTS, AGENT_CONNECTIONS } from "@/lib/constants";
 
 // Layout positions for 7 agents in a directed-graph formation
 const AGENT_POSITIONS: [number, number, number][] = [
-  [0, 2.5, 0],       // 0: Planner (top center)
-  [-3, 0.8, 0.5],    // 1: Research (left)
-  [3, 0.8, -0.5],    // 2: Retriever (right)
-  [0, -0.5, 0],      // 3: Critic (center)
-  [-2, -2.5, 0.3],   // 4: Memory (bottom left)
-  [2, -2.5, -0.3],   // 5: Execution (bottom right)
-  [0, -4.5, 0],      // 6: Verifier (bottom center)
+  [0, 2.5, 0], // 0: Planner (top center)
+  [-3, 0.8, 0.5], // 1: Research (left)
+  [3, 0.8, -0.5], // 2: Retriever (right)
+  [0, -0.5, 0], // 3: Critic (center)
+  [-2, -2.5, 0.3], // 4: Memory (bottom left)
+  [2, -2.5, -0.3], // 5: Execution (bottom right)
+  [0, -4.5, 0], // 6: Verifier (bottom center)
 ];
 
 // Data packet traveling along a connection edge
@@ -51,11 +51,12 @@ export default function AgentWorkflow() {
       toIdx: to,
       progress: (i * 0.15) % 1,
       speed: 0.003 + Math.random() * 0.004,
-    }))
+    })),
   );
 
   useFrame((state) => {
-    const { scrollProgress, hoveredAgent, prefersReducedMotion } = usePortfolioStore.getState();
+    const { scrollProgress, hoveredAgent, prefersReducedMotion } =
+      usePortfolioStore.getState();
     const time = state.clock.elapsedTime;
 
     // Visible during scene 1 (approx 0.12 - 0.35)
@@ -80,9 +81,9 @@ export default function AgentWorkflow() {
         new THREE.Vector3(
           targetScale * pulse,
           targetScale * pulse,
-          targetScale * pulse
+          targetScale * pulse,
         ),
-        0.08
+        0.08,
       );
 
       // Adjust glow
@@ -121,7 +122,9 @@ export default function AgentWorkflow() {
       {AGENTS.map((agent, i) => (
         <group
           key={agent.id}
-          ref={(el) => { nodeRefs.current[i] = el; }}
+          ref={(el) => {
+            nodeRefs.current[i] = el;
+          }}
           position={AGENT_POSITIONS[i]}
         >
           {/* Wireframe shell */}
@@ -137,7 +140,11 @@ export default function AgentWorkflow() {
           </mesh>
 
           {/* Glowing core */}
-          <mesh ref={(el) => { coreRefs.current[i] = el; }}>
+          <mesh
+            ref={(el) => {
+              coreRefs.current[i] = el;
+            }}
+          >
             <sphereGeometry args={[0.18, 16, 16]} />
             <meshBasicMaterial
               color={agent.color}

@@ -25,7 +25,7 @@ export default function SkillsMacroPad() {
       // Max tilt: 15 degrees, combining default tilt with mouse offset
       const defaultRotateX = 12;
       const defaultRotateY = -15;
-      
+
       const rotateX = defaultRotateX - y * 12;
       const rotateY = defaultRotateY + x * 15;
 
@@ -66,30 +66,45 @@ export default function SkillsMacroPad() {
         ref={containerRef}
         className="relative w-full max-w-[580px] p-6 rounded-3xl bg-[#0e1322]/80 border border-white/5 shadow-2xl transition-transform duration-300 ease-out will-change-transform animate-float"
         style={{
-          transform: "perspective(1200px) rotateX(12deg) rotateY(-15deg) rotateZ(-2deg)",
+          transform:
+            "perspective(1200px) rotateX(12deg) rotateY(-15deg) rotateZ(-2deg)",
           transformStyle: "preserve-3d",
-          boxShadow: "0 25px 60px -15px rgba(0,0,0,0.8), inset 0 1px 0 0 rgba(255,255,255,0.05), 0 0 40px -10px rgba(0,229,255,0.08)",
+          boxShadow:
+            "0 25px 60px -15px rgba(0,0,0,0.8), inset 0 1px 0 0 rgba(255,255,255,0.05), 0 0 40px -10px rgba(0,229,255,0.08)",
         }}
       >
         {/* Top Trim: Keypad status/OLED HUD */}
-        <div 
+        <div
           className="flex items-center justify-between mb-6 px-4 py-3 rounded-xl bg-black/60 border border-white/5 font-mono text-[9px] text-white/50"
-          style={{ transform: "translateZ(15px)", transformStyle: "preserve-3d" }}
+          style={{
+            transform: "translateZ(15px)",
+            transformStyle: "preserve-3d",
+          }}
         >
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00FFC8] animate-ping" />
-            <span className="font-semibold text-primary tracking-wider">SKILLS_ARSENAL // V1.0</span>
+            <span className="font-semibold text-primary tracking-wider">
+              SKILLS_ARSENAL // V1.0
+            </span>
           </div>
           <div className="flex gap-4">
-            <span>MEM_BANK: <span className="text-[#00FFC8] font-bold">READY</span></span>
-            <span>SYSTEM_CORE: <span className="text-[#00E5FF] font-bold">ONLINE</span></span>
+            <span>
+              MEM_BANK: <span className="text-[#00FFC8] font-bold">READY</span>
+            </span>
+            <span>
+              SYSTEM_CORE:{" "}
+              <span className="text-[#00E5FF] font-bold">ONLINE</span>
+            </span>
           </div>
         </div>
 
         {/* The Key Grid Matrix */}
-        <div 
+        <div
           className="grid grid-rows-5 gap-3.5"
-          style={{ transform: "translateZ(10px)", transformStyle: "preserve-3d" }}
+          style={{
+            transform: "translateZ(10px)",
+            transformStyle: "preserve-3d",
+          }}
         >
           {rows.map((row, rowIndex) => (
             <div key={rowIndex} className="grid grid-cols-6 gap-3.5">
@@ -125,22 +140,22 @@ export default function SkillsMacroPad() {
                     {/* Keycap (3D button) */}
                     <div
                       className={`relative w-full aspect-square flex flex-col items-center justify-center p-1 rounded-lg border text-center transition-all duration-200 select-none
-                        ${isHovered 
-                          ? "bg-white/[0.04]" 
-                          : "bg-white/[0.01]"
-                        }
+                        ${isHovered ? "bg-white/[0.04]" : "bg-white/[0.01]"}
                       `}
                       style={{
-                        borderColor: isHovered ? skill.color : "rgba(255,255,255,0.06)",
-                        boxShadow: isHovered 
-                          ? `0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.05), 0 0 10px -2px ${skill.color}` 
+                        borderColor: isHovered
+                          ? skill.color
+                          : "rgba(255,255,255,0.06)",
+                        boxShadow: isHovered
+                          ? `0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.05), 0 0 10px -2px ${skill.color}`
                           : "0 2px 4px rgba(0,0,0,0.4), inset 0 1px 0 0 rgba(255,255,255,0.02)",
-                        transform: isActive 
-                          ? "translateZ(2px)" 
-                          : isHovered 
-                            ? "translateZ(12px) translateY(-2px)" 
+                        transform: isActive
+                          ? "translateZ(2px)"
+                          : isHovered
+                            ? "translateZ(12px) translateY(-2px)"
                             : "translateZ(8px)",
-                        transition: "transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s, box-shadow 0.2s",
+                        transition:
+                          "transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s, box-shadow 0.2s",
                       }}
                     >
                       {/* Sub-LED color bar inside keycap */}
@@ -148,14 +163,20 @@ export default function SkillsMacroPad() {
                         className="w-4 h-1 rounded-full mb-1.5 transition-all duration-300"
                         style={{
                           backgroundColor: skill.color,
-                          boxShadow: isHovered ? `0 0 8px ${skill.color}` : "none",
+                          boxShadow: isHovered
+                            ? `0 0 8px ${skill.color}`
+                            : "none",
                         }}
                       />
 
                       {/* Keycap main text */}
-                      <span 
+                      <span
                         className="text-[9px] sm:text-[10px] md:text-[11px] font-bold tracking-tight font-display transition-colors duration-200"
-                        style={{ color: isHovered ? "#FFFFFF" : "rgba(255,255,255,0.6)" }}
+                        style={{
+                          color: isHovered
+                            ? "#FFFFFF"
+                            : "rgba(255,255,255,0.6)",
+                        }}
                       >
                         {skill.name}
                       </span>
@@ -182,7 +203,10 @@ export default function SkillsMacroPad() {
                           {skill.name}
                         </p>
                         {/* Tooltip Category */}
-                        <p className="text-[7.5px] font-mono uppercase tracking-widest mb-1.5" style={{ color: skill.color }}>
+                        <p
+                          className="text-[7.5px] font-mono uppercase tracking-widest mb-1.5"
+                          style={{ color: skill.color }}
+                        >
                           {skill.category}
                         </p>
                         {/* Tooltip Description */}
@@ -199,9 +223,12 @@ export default function SkillsMacroPad() {
         </div>
 
         {/* Keypad Base Plate Trim details */}
-        <div 
+        <div
           className="mt-6 flex items-center justify-between px-2 text-[8px] font-mono text-white/20"
-          style={{ transform: "translateZ(8px)", transformStyle: "preserve-3d" }}
+          style={{
+            transform: "translateZ(8px)",
+            transformStyle: "preserve-3d",
+          }}
         >
           <span>KEYPAD_MATRIX: [5x6]</span>
           <span>CALIBRATED: OK</span>
